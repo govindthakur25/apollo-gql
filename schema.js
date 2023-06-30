@@ -43,7 +43,7 @@ module.exports = gql`
     speakers: [Speaker]
   }
   input SessionInput {
-    id: ID!
+    id: ID
     title: String!
     description: String
     startsAt: String
