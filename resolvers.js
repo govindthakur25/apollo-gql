@@ -9,11 +9,11 @@ module.exports = {
       const { dataSources } = context;
       return dataSources.sessionAPI.getSessionById(id);
     },
-    speakers: (parent, args, { datasources }, info) => {
-      return datasources.speakerAPI.getSpeakers();
+    speakers: (parent, args, { dataSources }, info) => {
+      return dataSources.speakerAPI.getSpeakers();
     },
-    speakerById: (parent, { id }, { datasources }, info) => {
-      return datasources.speakerAPI.getSpeakerById(id);
+    speakerById: (parent, { id }, { dataSources }, info) => {
+      return dataSources.speakerAPI.getSpeakerById(id);
     },
   },
 };
