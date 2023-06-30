@@ -15,6 +15,8 @@ module.exports = gql`
       format: String
     ): [Session]
     sessionById(id: ID): Session
+    speakers: [Speaker]
+    speakerById(id: ID): Speaker
   }
   type Speaker {
     id: ID!
