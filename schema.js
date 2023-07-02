@@ -16,7 +16,7 @@ module.exports = gql`
     ): [Session]
     sessionById(id: ID): SessionOrError
     speakers: [Speaker]
-    speakerById(id: ID): Speaker
+    speakerById(id: ID): SpeakerOrError
   }
   type Mutation {
     toggleFavoriteSession(id: ID): Session
@@ -48,7 +48,7 @@ module.exports = gql`
     token: String
   }
   union SessionOrError = Session | Error
-
+  union SpeakerOrError = Speaker | Error
   input SessionInput {
     id: ID
     title: String!

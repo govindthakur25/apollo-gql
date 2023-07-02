@@ -12,8 +12,16 @@ class SpeakerAPI extends RESTDataSource {
   }
 
   async getSpeakerById(id) {
-    const data = await this.get(`/${id}`);
-    return data;
+    try {
+      const data = await this.get(`/${id}`);
+      return data;
+    } catch (error) {
+      return {
+        code: "SPEAKERBYID",
+        message: "There is some error while getting the response",
+        token: "agdf4642vasvf27355",
+      };
+    }
   }
 }
 
