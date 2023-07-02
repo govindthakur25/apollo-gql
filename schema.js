@@ -14,9 +14,13 @@ module.exports = gql`
       level: String
       format: String
     ): [Session]
-    sessionById(id: ID): Session
+    sessionById(id: ID): SessionOrError
     speakers: [Speaker]
-    speakerById(id: ID): Speaker
+    speakerById(id: ID): SpeakerOrError
+  }
+  type Mutation {
+    toggleFavoriteSession(id: ID): Session
+    addNewSession(session: SessionInput): Session
   }
   type Speaker {
     id: ID!
@@ -35,6 +39,27 @@ module.exports = gql`
     track: String
     level: String
     format: String
+    favorite: Boolean
     speakers: [Speaker]
+  }
+  type Error {
+    code: String
+    message: String
+    token: String
+  }
+  union SessionOrError = Session | Error
+  union SpeakerOrError = Speaker | Error
+  input SessionInput {
+    id: ID
+    title: String!
+    description: String
+    startsAt: String
+    endsAt: String
+    room: String
+    day: String
+    track: String
+    level: String
+    format: String
+    favorite: Boolean
   }
 `;
