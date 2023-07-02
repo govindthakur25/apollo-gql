@@ -1,0 +1,42 @@
+# Write your query or mutation here
+query {
+  sessions(room: "Europa", track: ".NET") {
+    title
+    favorite
+    room
+    id
+    level
+    speakers {
+      name
+      id
+    }
+  }
+  speakerById(id: "2bda8276-b7b6-4653-a7c5-1bcc59d11a49") {
+    ... on Speaker {
+      name
+      bio
+    }
+    ... on Error {
+      message
+      code
+      token
+    }
+  }
+  sessionById(id: 84473) {
+    ... on Session {
+      title
+      room
+      track
+      level
+      id
+      speakers {
+        name
+      }
+    }
+    ... on Error {
+      code
+      message
+      token
+    }
+  }
+}
