@@ -14,4 +14,12 @@ module.exports = {
       return "Session";
     },
   },
+  SpeakerOrError: {
+    __resolveType(obj) {
+      if (obj.code) {
+        return "Error";
+      }
+      return "Speaker";
+    },
+  },
 };
