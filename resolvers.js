@@ -6,4 +6,12 @@ module.exports = {
   Query,
   Session,
   Mutation,
+  SessionOrError: {
+    __resolveType(obj) {
+      if (obj.code) {
+        return "Error";
+      }
+      return "Session";
+    },
+  },
 };

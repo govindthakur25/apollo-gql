@@ -14,7 +14,7 @@ module.exports = gql`
       level: String
       format: String
     ): [Session]
-    sessionById(id: ID): Session
+    sessionById(id: ID): SessionOrError
     speakers: [Speaker]
     speakerById(id: ID): Speaker
   }
@@ -42,6 +42,13 @@ module.exports = gql`
     favorite: Boolean
     speakers: [Speaker]
   }
+  type Error {
+    code: String
+    message: String
+    token: String
+  }
+  union SessionOrError = Session | Error
+
   input SessionInput {
     id: ID
     title: String!

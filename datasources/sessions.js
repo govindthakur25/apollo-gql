@@ -14,8 +14,16 @@ class SessionAPI extends DataSource {
   }
 
   getSessionById(id) {
-    const session = _.filter(sessions, { id: parseInt(id) });
-    return session[0];
+    try {
+      const session = _.filter(sessions, { id: parseInt(id) });
+      return session[0];
+    } catch (error) {
+      return {
+        code: "SESSIONBYID",
+        message: "There is some error while getting the response",
+        token: "abscdef",
+      };
+    }
   }
 
   toggleFavoriteSession(id) {
